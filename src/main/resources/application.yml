@@ -1,7 +1,7 @@
 spring:
   datasource:
     password: password
-    url: jdbc:h2:~/test5
+    url: jdbc:h2:~/gradeSystem;AUTO_SERVER=TRUE
     username: sa
     hikari:
       auto-commit: false
@@ -12,7 +12,7 @@ spring:
   swagger:
     apiinfo:
       title: Springboot Sandbox
-      description: Свагер для тестов
+      description: Свагер для тестов API
       version: 1.0
       contact:
         name: Alexander Boyko
@@ -21,6 +21,10 @@ spring:
       basePackage: "ru.bass2000.springbootsandbox"
   liquibase:
     change-log: 'classpath:db/migration/changelog.xml'
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
 application:
   api:
     uriPrefix: /api/v1.1

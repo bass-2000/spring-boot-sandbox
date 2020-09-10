@@ -4,10 +4,51 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
     <changeSet id="2020-09-08-users-insert" author="bass2000">
-        <insert tableName="users">
-            <column name="name" value="Alexander"/>
-            <column name="description" value="Java developer"/>
-            <column name="age" value="31"/>
+        <insert tableName="MARK">
+            <column name="id" value="1"/>
+            <column name="name" value="A+"/>
+        </insert>
+        <insert tableName="MARK">
+            <column name="id" value="2"/>
+            <column name="name" value="A"/>
+        </insert>
+        <insert tableName="MARK">
+            <column name="id" value="3"/>
+            <column name="name" value="B"/>
+        </insert>
+        <insert tableName="MARK">
+            <column name="id" value="4"/>
+            <column name="name" value="C"/>
+        </insert>
+        <insert tableName="MARK">
+            <column name="id" value="5"/>
+            <column name="name" value="E"/>
+        </insert>
+        <insert tableName="MARK">
+            <column name="id" value="6"/>
+            <column name="name" value="F"/>
+        </insert>
+        <insert tableName="PERSON_TYPE">
+            <column name="id" value="0"/>
+            <column name="type" value="student"/>
+        </insert>
+        <insert tableName="PERSON_TYPE">
+            <column name="id" value="1"/>
+            <column name="type" value="professor"/>
+        </insert>
+        <insert tableName="PERSONS">
+            <column name="id" value="1"/>
+            <column name="first_name" value="Ivan"/>
+            <column name="middle_name" value="Ivanovich"/>
+            <column name="last_name" value="Ivanov"/>
+            <column name="type_id" value="0"/>
+        </insert>
+        <insert tableName="PERSONS">
+            <column name="id" value="2"/>
+            <column name="first_name" value="Petr"/>
+            <column name="middle_name" value="Petrovich"/>
+            <column name="last_name" value="Petrov"/>
+            <column name="type_id" value="1"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

@@ -1,29 +1,125 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
-    <changeSet id="2020-09-08-users-table" author="bass2000">
-        <createTable tableName="users" remarks="Пользователи">
-            <column name="id" remarks="Идентификатор ползователя" type="int" autoIncrement="true" startWith="1"
-                    incrementBy="1">
-                <constraints
-                        nullable="false"
-                        primaryKey="true"
-                        primaryKeyName="users_pkey"
-                        unique="true"/>
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+    <changeSet author="alexanderboyko (generated)" id="1599737287390-1">
+        <createTable tableName="JOURNAL">
+            <column autoIncrement="true" name="ID" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="JOURNAL_PK"/>
             </column>
-            <column name="name" remarks="Имя" type="varchar(20)">
+            <column name="STUDENT_ID" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="description" remarks="Описание" type="varchar(100)">
-                <constraints nullable="false"
-                             unique="false"/>
+            <column name="SUBJECT_ID" type="INT">
+                <constraints nullable="false"/>
             </column>
-            <column name="age" remarks="Возраст" type="integer">
-                <constraints nullable="false"
-                             unique="false"/>
+            <column name="MARK_ID" type="INT">
+                <constraints nullable="false"/>
             </column>
         </createTable>
+    </changeSet>
+    <changeSet author="alexanderboyko (generated)" id="1599737287390-2">
+        <createTable tableName="MARK">
+            <column autoIncrement="true" name="ID" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="MARK_PK"/>
+            </column>
+            <column name="name" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alexanderboyko (generated)" id="1599737287390-3">
+        <createTable tableName="PERSONS">
+            <column autoIncrement="true" name="ID" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PERSONS_PK"/>
+            </column>
+            <column name="FIRST_NAME" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MIDDLE_NAME" type="VARCHAR(20)"/>
+            <column name="LAST_NAME" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TYPE_ID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alexanderboyko (generated)" id="1599737287390-4">
+        <createTable tableName="PERSON_TYPE">
+            <column autoIncrement="true" name="ID" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PERSON_TYPE_PK"/>
+            </column>
+            <column name="TYPE" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alexanderboyko (generated)" id="1599737287390-5">
+        <createTable tableName="SUBJECT">
+            <column autoIncrement="true" name="ID" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="SUBJECT_PK"/>
+            </column>
+            <column name="NAME" type="INT"/>
+            <column name="PROFESSOR_ID" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="alexanderboyko (generated)" id="1599737287390-8">
+        <createIndex indexName="JOURNAL_MARK__FK_INDEX_D" tableName="JOURNAL">
+            <column name="MARK_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alexanderboyko (generated)" id="1599737287390-9">
+        <createIndex indexName="JOURNAL_STUDENT__FK_INDEX_D" tableName="JOURNAL">
+            <column name="STUDENT_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alexanderboyko (generated)" id="1599737287390-10">
+        <createIndex indexName="JOURNAL_SUBJECT__FK_INDEX_D" tableName="JOURNAL">
+            <column name="SUBJECT_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alexanderboyko (generated)" id="1599737287390-11">
+        <createIndex indexName="MARK_name_UINDEX" tableName="MARK" unique="true">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alexanderboyko (generated)" id="1599737287390-12">
+        <createIndex indexName="PERSONS_TYPE__FK_INDEX_2" tableName="PERSONS">
+            <column name="TYPE_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alexanderboyko (generated)" id="1599737287390-13">
+        <createIndex indexName="SUBJECT_CURATOR__FK_INDEX_B" tableName="SUBJECT">
+            <column name="PROFESSOR_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alexanderboyko (generated)" id="1599737287390-14">
+        <addForeignKeyConstraint baseColumnNames="MARK_ID" baseTableName="JOURNAL" constraintName="JOURNAL_MARK__FK"
+                                 deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="ID" referencedTableName="MARK" validate="true"/>
+    </changeSet>
+    <changeSet author="alexanderboyko (generated)" id="1599737287390-15">
+        <addForeignKeyConstraint baseColumnNames="STUDENT_ID" baseTableName="JOURNAL"
+                                 constraintName="JOURNAL_STUDENT__FK" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ID"
+                                 referencedTableName="PERSONS" validate="true"/>
+    </changeSet>
+    <changeSet author="alexanderboyko (generated)" id="1599737287390-16">
+        <addForeignKeyConstraint baseColumnNames="SUBJECT_ID" baseTableName="JOURNAL"
+                                 constraintName="JOURNAL_SUBJECT__FK" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ID"
+                                 referencedTableName="SUBJECT" validate="true"/>
+    </changeSet>
+    <changeSet author="alexanderboyko (generated)" id="1599737287390-17">
+        <addForeignKeyConstraint baseColumnNames="TYPE_ID" baseTableName="PERSONS" constraintName="PERSONS_TYPE__FK"
+                                 deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="ID" referencedTableName="PERSON_TYPE" validate="true"/>
+    </changeSet>
+    <changeSet author="alexanderboyko (generated)" id="1599737287390-18">
+        <addForeignKeyConstraint baseColumnNames="PROFESSOR_ID" baseTableName="SUBJECT"
+                                 constraintName="SUBJECT_CURATOR__FK" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ID"
+                                 referencedTableName="PERSONS" validate="true"/>
     </changeSet>
 </databaseChangeLog>
