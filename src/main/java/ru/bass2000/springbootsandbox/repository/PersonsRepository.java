@@ -6,4 +6,6 @@ import ru.bass2000.springbootsandbox.model.entity.Person;
 
 @Repository
 public interface PersonsRepository extends CrudRepository<Person, Integer> {
+
+    Person findByFirstNameIgnoreCaseAndMiddleNameIgnoreCaseAndLastNameIgnoreCase(String firstName, String middleName, String lastName);
 }

@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import ru.bass2000.springbootsandbox.model.PersonType;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ import javax.persistence.*;
 @Table(name = "PERSONS")
 @ApiModel("Модель пользователя")
 @NoArgsConstructor
+@Accessors(chain = true)
 public class Person {
     @ApiModelProperty("Идентификатор пользователя")
     @Id

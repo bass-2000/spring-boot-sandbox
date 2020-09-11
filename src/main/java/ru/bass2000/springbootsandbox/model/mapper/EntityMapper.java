@@ -13,5 +13,4 @@ public interface EntityMapper {
     @Mapping(ignore = true, target = "id")
     Person personDtoToPerson(PersonDTO dto);
 
-    PersonDTO personDtoToPerson(Person person);
 }

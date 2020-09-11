@@ -60,7 +60,7 @@
             <column autoIncrement="true" name="ID" type="INT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="SUBJECT_PK"/>
             </column>
-            <column name="NAME" type="INT"/>
+            <column name="NAME" type="VARCHAR(20)"/>
             <column name="PROFESSOR_ID" type="INT"/>
         </createTable>
     </changeSet>

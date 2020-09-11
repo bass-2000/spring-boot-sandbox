@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.bass2000.springbootsandbox.model.dto.PersonDTO;
 import ru.bass2000.springbootsandbox.model.entity.Person;
-import ru.bass2000.springbootsandbox.service.PersonService;
+import ru.bass2000.springbootsandbox.service.PersonsService;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping(value = "${application.api.uriPrefix}/person")
 public class PersonsController {
-    private final PersonService personService;
+    private final PersonsService personService;
 
     @GetMapping
     @ApiOperation(value = "Получить список всех пользователей")
@@ -38,8 +38,8 @@ public class PersonsController {
     @PutMapping(value = "/{id}")
     @ApiParam(name = "id", value = "Идентификатор пользователя")
     @ApiOperation(value = "Редактировать пользователя")
-    public Person editPerson(@PathVariable int id,
-                             @RequestBody PersonDTO personDTO) {
+    public Person updatePerson(@PathVariable int id,
+                               @RequestBody PersonDTO personDTO) {
         return personService.editPerson(id, personDTO);
     }
 
